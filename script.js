@@ -19,6 +19,49 @@ menuButton.addEventListener('click', () => {
 nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
 window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 30), { passive: true });
 
+const heroMessage = document.getElementById('heroMessage');
+const typingLead = heroMessage.querySelector('.typing-lead');
+const typingAccent = heroMessage.querySelector('.typing-accent');
+const heroMessages = [
+  ['Ideias que ', 'movem marcas.'],
+  ['Design, tecnologia e ', 'estratégia para o seu negócio crescer.'],
+  ['Sua identidade digital. Seu espaço. ', 'Sua melhor ideia.'],
+  ['Sites personalizados que transformam ideias em ', 'presença digital.'],
+  ['Sua marca disponível em ', 'todos os dispositivos.']
+];
+
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  let messageIndex = 0;
+  let characterIndex = 0;
+  let deleting = false;
+  const typeNextCharacter = () => {
+    const [lead, accent] = heroMessages[messageIndex];
+    const fullMessage = lead + accent;
+    const visible = fullMessage.slice(0, characterIndex);
+    typingLead.textContent = visible.slice(0, Math.min(characterIndex, lead.length));
+    typingAccent.textContent = visible.slice(lead.length);
+    heroMessage.setAttribute('aria-label', fullMessage);
+
+    if (!deleting && characterIndex < fullMessage.length) {
+      characterIndex += 1;
+      setTimeout(typeNextCharacter, 42);
+    } else if (!deleting) {
+      deleting = true;
+      setTimeout(typeNextCharacter, 2600);
+    } else if (characterIndex > 0) {
+      characterIndex -= 1;
+      setTimeout(typeNextCharacter, 18);
+    } else {
+      deleting = false;
+      messageIndex = (messageIndex + 1) % heroMessages.length;
+      setTimeout(typeNextCharacter, 400);
+    }
+  };
+  typingLead.textContent = '';
+  typingAccent.textContent = '';
+  typeNextCharacter();
+}
+
 if ('IntersectionObserver' in window) {
   const revealElements = document.querySelectorAll('.reveal');
   revealElements.forEach((element) => element.classList.add('waiting'));
