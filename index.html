@@ -170,11 +170,14 @@
           <p>Conte um pouco sobre seu negocio e o que voce imagina. Respondemos em ate um dia util.</p>
           <div class="contact-details"><a href="mailto:ola@semideia.com.br">ola@semideia.com.br</a><a href="tel:+5511999994321">(11)&nbsp;99999&#8209;4321</a><span>Sao Paulo · Atendemos todo o Brasil</span></div>
         </div>
-        <form class="contact-form reveal" id="contactForm">
+        <form class="contact-form reveal" id="contactForm" enctype="multipart/form-data">
           <div class="field"><label for="name">Seu nome</label><input id="name" name="name" type="text" autocomplete="name" placeholder="Como podemos chamar voce?" required></div>
           <div class="field"><label for="email">Seu melhor e-mail</label><input id="email" name="email" type="email" autocomplete="email" placeholder="voce@empresa.com.br" required></div>
+          <div class="field"><label for="phone">Telefone ou WhatsApp</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="(00) 00000-0000" required></div>
+          <div class="field"><label for="address">Endereco</label><input id="address" name="address" type="text" autocomplete="address-line1" placeholder="Cidade, estado ou endereco completo" required></div>
           <div class="field"><label for="service">O que voce precisa?</label><select id="service" name="service" required><option value="" disabled selected>Selecione uma opcao</option><option>Site institucional</option><option>Landing page</option><option>Loja virtual</option><option>Identidade digital</option><option>Suporte e evolucao</option></select></div>
           <div class="field"><label for="message">Conte sobre a sua ideia</label><textarea id="message" name="message" placeholder="Objetivos, prazos e tudo que achar importante..." required></textarea></div>
+          <div class="field"><label for="attachments">Imagens ou PDF</label><input id="attachments" name="attachments" type="file" accept="image/jpeg,image/png,image/webp,application/pdf" multiple><small class="file-hint" id="fileHint">Ate 5 arquivos e 10 MB no total.</small></div>
           <button class="button button-primary" type="submit">Enviar minha ideia <span>→</span></button>
           <p class="form-status" id="formStatus" role="status"></p>
         </form>
@@ -183,9 +186,11 @@
   </main>
 
   <footer>
-    <div class="shell footer-top"><a class="brand" href="#topo"><img src="log_semideia_edited.png" alt="Semideia.com.br - Seu site, sua melhor ideia"></a><p>Ideias bem pensadas.<br>Sites bem feitos.</p><div class="social"><a href="#" aria-label="Instagram">Instagram ↗</a><a href="#" aria-label="LinkedIn">LinkedIn ↗</a><a href="#" aria-label="Behance">Behance ↗</a></div></div>
+    <div class="shell footer-top"><a class="brand" href="#topo"><img src="log_semideia_edited.png" alt="Semideia.com.br - Seu site, sua melhor ideia"></a><p>Ideias bem pensadas.<br>Sites bem feitos.</p><div class="social"><a href="#" aria-label="Instagram">Instagram ↗</a><a href="#" aria-label="LinkedIn">LinkedIn ↗</a><a href="admin.html">Area administrativa ↗</a></div></div>
     <div class="shell footer-bottom"><span>© <span id="year"></span> Semideia. Todos os direitos reservados.</span><span>Feito com estrategia, cafe e boas ideias.</span></div>
   </footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

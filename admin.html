@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08090C">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Administracao | Semideia</title>
+  <link rel="icon" href="log_semideia_edited.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Montserrat:wght@700;800;900&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div class="admin-grid" aria-hidden="true"></div>
+  <main class="admin-shell">
+    <a class="admin-brand" href="index.html"><img src="log_semideia_edited.png" alt="Semideia.com.br"></a>
+
+    <section class="login-card" id="loginView">
+      <p class="eyebrow">Area protegida</p>
+      <h1>Acesso administrativo</h1>
+      <p class="lead">Entre com o usuario criado no Supabase Auth.</p>
+      <form id="loginForm">
+        <label for="adminEmail">E-mail</label>
+        <input id="adminEmail" name="email" type="email" autocomplete="username" required>
+        <label for="adminPassword">Senha</label>
+        <input id="adminPassword" name="password" type="password" autocomplete="current-password" required>
+        <button type="submit">Entrar</button>
+        <p class="status" id="loginStatus" role="status"></p>
+      </form>
+    </section>
+
+    <section class="dashboard" id="dashboardView" hidden>
+      <header class="dashboard-header">
+        <div><p class="eyebrow">Painel Semideia</p><h1>Solicitacoes recebidas</h1></div>
+        <div class="dashboard-actions"><button id="refreshButton" type="button">Atualizar</button><button class="ghost" id="logoutButton" type="button">Sair</button></div>
+      </header>
+      <div class="summary"><div><strong id="totalCount">0</strong><span>Total</span></div><div><strong id="newCount">0</strong><span>Novas</span></div><div><strong id="contactedCount">0</strong><span>Em atendimento</span></div></div>
+      <p class="status" id="dashboardStatus" role="status"></p>
+      <div class="request-list" id="requestList"></div>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
