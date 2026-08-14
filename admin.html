@@ -13,25 +13,42 @@
   <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-  <div class="admin-grid" aria-hidden="true"></div>
-  <main class="admin-shell">
-    <a class="admin-brand" href="index.html"><img src="log_semideia_edited.png" alt="Semideia.com.br"></a>
-
-    <section class="login-card" id="loginView">
-      <p class="eyebrow">Area protegida</p>
-      <h1>Acesso administrativo</h1>
-      <p class="lead">Entre com o usuario criado no Supabase Auth.</p>
-      <form id="loginForm">
+  <section class="login-screen" id="loginView">
+    <section class="login-gallery" aria-label="Projetos digitais da Semideia">
+      <div class="login-dots" role="group" aria-label="Selecionar projeto"></div>
+      <article class="login-slide active">
+        <img src="portfolio-nexo.svg" alt="Pagina institucional Nexo criada pela Semideia">
+        <div class="login-caption"><span>Site institucional</span><h2>Nexo. Ideias que movem marcas.</h2></div>
+      </article>
+      <article class="login-slide">
+        <img src="portfolio-aurora.svg" alt="Pagina de arquitetura Aurora criada pela Semideia">
+        <div class="login-caption"><span>Experiencia editorial</span><h2>Aurora. Espacos que inspiram.</h2></div>
+      </article>
+      <article class="login-slide">
+        <img src="portfolio-flora.svg" alt="Landing page Flora criada pela Semideia">
+        <div class="login-caption"><span>Landing page</span><h2>Flora. Cuidado que floresce.</h2></div>
+      </article>
+    </section>
+    <div class="login-panel">
+      <form class="login-card" id="loginForm">
+        <a class="admin-brand" href="index.html"><img src="log_semideia_edited.png" alt="Semideia.com.br"></a>
+        <p class="eyebrow">Area protegida</p>
+        <h1>Acesso administrativo</h1>
+        <p class="lead">Entre com o usuario criado no Supabase Auth.</p>
         <label for="adminEmail">E-mail</label>
         <input id="adminEmail" name="email" type="email" autocomplete="username" required>
         <label for="adminPassword">Senha</label>
         <input id="adminPassword" name="password" type="password" autocomplete="current-password" required>
-        <button type="submit">Entrar</button>
+        <button type="submit">Entrar no painel</button>
+        <a class="back-link" href="index.html">Voltar para o site</a>
         <p class="status" id="loginStatus" role="status"></p>
       </form>
-    </section>
+    </div>
+  </section>
 
+  <main class="admin-shell">
     <section class="dashboard" id="dashboardView" hidden>
+      <a class="admin-brand dashboard-brand" href="index.html"><img src="log_semideia_edited.png" alt="Semideia.com.br"></a>
       <header class="dashboard-header">
         <div><p class="eyebrow">Painel Semideia</p><h1>Solicitacoes recebidas</h1></div>
         <div class="dashboard-actions"><button id="refreshButton" type="button">Atualizar</button><button class="ghost" id="logoutButton" type="button">Sair</button></div>

@@ -5,6 +5,28 @@ const loginStatus = document.getElementById('loginStatus');
 const dashboardStatus = document.getElementById('dashboardStatus');
 const requestList = document.getElementById('requestList');
 const client = window.getSupabaseClient?.();
+const slides = [...document.querySelectorAll('.login-slide')];
+const dotsBox = document.querySelector('.login-dots');
+let slideIndex = 0;
+
+const showSlide = (index) => {
+  slideIndex = (index + slides.length) % slides.length;
+  slides.forEach((slide, position) => slide.classList.toggle('active', position === slideIndex));
+  [...dotsBox.children].forEach((dot, position) => dot.classList.toggle('active', position === slideIndex));
+};
+
+slides.forEach((_slide, index) => {
+  const dot = document.createElement('button');
+  dot.type = 'button';
+  dot.className = `login-dot${index === 0 ? ' active' : ''}`;
+  dot.setAttribute('aria-label', `Mostrar projeto ${index + 1}`);
+  dot.addEventListener('click', () => showSlide(index));
+  dotsBox.appendChild(dot);
+});
+
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  setInterval(() => showSlide(slideIndex + 1), 4800);
+}
 
 const setView = (authenticated) => {
   loginView.hidden = authenticated;
