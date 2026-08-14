@@ -1,17 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 190" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 210" role="img" aria-labelledby="title desc">
   <title id="title">Semideia.com.br</title>
   <desc id="desc">Seu site, sua melhor ideia</desc>
   <defs>
-    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#14c8ff"/><stop offset=".48" stop-color="#0678ed"/><stop offset="1" stop-color="#073b9f"/></linearGradient>
-    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#31465f"/><stop offset="1" stop-color="#07111f"/></linearGradient>
-    <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <linearGradient id="red" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#8F0000"/><stop offset=".52" stop-color="#E10600"/><stop offset="1" stop-color="#FF2A1A"/>
+    </linearGradient>
+    <linearGradient id="silver" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#FFFFFF"/><stop offset=".48" stop-color="#DDE0E4"/><stop offset="1" stop-color="#8E949C"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#FFC247"/><stop offset=".5" stop-color="#FF9F0A"/><stop offset="1" stop-color="#E66A00"/>
+    </linearGradient>
+    <filter id="redGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="blur"/><feFlood flood-color="#E10600" flood-opacity=".5"/><feComposite in2="blur" operator="in"/><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#000" flood-opacity=".75"/></filter>
   </defs>
-  <g transform="translate(12 8)">
-    <path fill="url(#dark)" stroke="#5b7087" stroke-width="3" d="M104 4h123l-29 31h-92c-18 0-28 8-31 20-3 11 6 18 24 18h46c41 0 57 19 48 49-9 33-38 52-84 52H0l31-33h84c18 0 29-8 32-20 3-11-5-17-23-17H76c-40 0-56-18-47-48C38 23 64 4 104 4z"/>
-    <path fill="url(#blue)" stroke="#8be9ff" stroke-width="3" filter="url(#glow)" d="M119 8h120l-34 33h-88c-16 0-23 5-25 13-2 7 5 11 20 11h45c30 0 46 10 49 28-12-8-28-12-48-12h-48c-30 0-45-12-40-30 6-25 22-38 49-43zm74 94c-3 42-33 65-83 65H5l32-32h81c20 0 31-7 34-19 2-8-3-13-15-15h21c14 0 26 0 35 1z"/>
+
+  <g transform="translate(9 8)" filter="url(#shadow)">
+    <path d="M31 21h165l-26 31H73c-11 0-17 4-19 11-2 7 4 11 15 11h72c36 0 51 16 43 45-9 34-36 52-79 52H6l29-34h89c11 0 18-5 21-13 2-7-4-11-16-11H57c-36 0-51-16-43-44 8-31 34-48 75-48z" fill="url(#red)" stroke="#FF4B3E" stroke-width="2.5" filter="url(#redGlow)"/>
+    <path d="M213 21h73c63 0 94 26 83 75-11 48-51 75-113 75h-93l35-34h66c33 0 55-14 61-41 6-26-10-41-42-41h-42l-23 82h-43z" fill="url(#silver)" stroke="#FFFFFF" stroke-width="2"/>
+    <rect x="242" y="67" width="82" height="58" rx="8" fill="#111318" stroke="#BFC3C9" stroke-width="3"/>
+    <rect x="251" y="76" width="64" height="18" rx="3" fill="url(#red)"/>
+    <rect x="251" y="101" width="27" height="15" rx="2" fill="#BFC3C9"/><rect x="284" y="101" width="31" height="5" rx="2" fill="#BFC3C9"/><rect x="284" y="111" width="22" height="5" rx="2" fill="#737981"/>
   </g>
-  <text x="245" y="104" fill="#f6fbff" font-family="Arial,sans-serif" font-size="69" font-weight="800" letter-spacing="-4">semideia</text>
-  <text x="520" y="132" fill="#18baff" font-family="Arial,sans-serif" font-size="27" font-weight="700">.com.br</text>
-  <path d="M242 121h262" stroke="#0b87f4" stroke-width="5" stroke-linecap="round"/>
-  <text x="247" y="160" fill="#9cb2c9" font-family="Arial,sans-serif" font-size="17" letter-spacing="6">SEU SITE, SUA MELHOR IDEIA!</text>
+
+  <g font-family="Arial Black,Arial,sans-serif" font-weight="900" letter-spacing="-4" filter="url(#shadow)">
+    <text x="385" y="95" fill="url(#silver)" font-size="69">SEM</text>
+    <text x="526" y="95" fill="url(#gold)" font-size="69">i</text>
+    <text x="547" y="95" fill="url(#red)" font-size="69">DEIA</text>
+  </g>
+  <text x="648" y="125" fill="#BFC3C9" font-family="Arial,sans-serif" font-size="23" font-weight="800">.COM.BR</text>
+  <path d="M386 112h245" stroke="url(#red)" stroke-width="4" stroke-linecap="round" filter="url(#redGlow)"/>
+  <text x="389" y="153" fill="#BFC3C9" font-family="Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="5">SEU SITE, SUA</text>
+  <text x="546" y="153" fill="#FFC247" font-family="Arial,sans-serif" font-size="15" font-weight="800" letter-spacing="5">MELHOR IDEIA!</text>
 </svg>
