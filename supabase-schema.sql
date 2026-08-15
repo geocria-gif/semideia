@@ -90,3 +90,83 @@ drop policy if exists "Authenticated users can delete contact attachments" on st
 create policy "Authenticated users can delete contact attachments"
 on storage.objects for delete to authenticated
 using (bucket_id = 'contact-attachments' and public.is_admin());
+
+create table if not exists public.instagram_posts (
+  id uuid primary key default gen_random_uuid(),
+  format text not null check (format in ('feed', 'reel')),
+  topic text not null check (char_length(topic) between 3 and 500),
+  tone text not null default 'profissional',
+  goal text not null default 'gerar interesse',
+  headline text not null,
+  caption text not null,
+  hashtags text[] not null default '{}',
+  reel_script jsonb,
+  template text not null default 'impact',
+  media_path text,
+  cover_path text,
+  status text not null default 'draft' check (status in ('draft', 'approved', 'scheduled', 'publishing', 'published', 'failed')),
+  scheduled_at timestamptz,
+  instagram_media_id text,
+  error_message text,
+  created_by uuid references auth.users(id) on delete set null,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+alter table public.instagram_posts enable row level security;
+
+drop policy if exists "Admins can read Instagram posts" on public.instagram_posts;
+create policy "Admins can read Instagram posts"
+on public.instagram_posts for select to authenticated
+using (public.is_admin());
+
+drop policy if exists "Admins can create Instagram posts" on public.instagram_posts;
+create policy "Admins can create Instagram posts"
+on public.instagram_posts for insert to authenticated
+with check (public.is_admin());
+
+drop policy if exists "Admins can update Instagram posts" on public.instagram_posts;
+create policy "Admins can update Instagram posts"
+on public.instagram_posts for update to authenticated
+using (public.is_admin()) with check (public.is_admin());
+
+drop policy if exists "Admins can delete Instagram posts" on public.instagram_posts;
+create policy "Admins can delete Instagram posts"
+on public.instagram_posts for delete to authenticated
+using (public.is_admin());
+
+grant select, insert, update, delete on public.instagram_posts to authenticated;
+
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values (
+  'instagram-content',
+  'instagram-content',
+  false,
+  104857600,
+  array['image/jpeg', 'image/png', 'image/webp', 'video/mp4']
+)
+on conflict (id) do update set
+  public = excluded.public,
+  file_size_limit = excluded.file_size_limit,
+  allowed_mime_types = excluded.allowed_mime_types;
+
+drop policy if exists "Admins can upload Instagram content" on storage.objects;
+create policy "Admins can upload Instagram content"
+on storage.objects for insert to authenticated
+with check (bucket_id = 'instagram-content' and public.is_admin());
+
+drop policy if exists "Admins can read Instagram content" on storage.objects;
+create policy "Admins can read Instagram content"
+on storage.objects for select to authenticated
+using (bucket_id = 'instagram-content' and public.is_admin());
+
+drop policy if exists "Admins can update Instagram content" on storage.objects;
+create policy "Admins can update Instagram content"
+on storage.objects for update to authenticated
+using (bucket_id = 'instagram-content' and public.is_admin())
+with check (bucket_id = 'instagram-content' and public.is_admin());
+
+drop policy if exists "Admins can delete Instagram content" on storage.objects;
+create policy "Admins can delete Instagram content"
+on storage.objects for delete to authenticated
+using (bucket_id = 'instagram-content' and public.is_admin());

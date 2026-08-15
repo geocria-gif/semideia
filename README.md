@@ -27,3 +27,27 @@ select id from auth.users where email = 'plbpoliana@gmail.com';
 7. Nunca coloque a chave `service_role` em arquivos do site.
 
 O formulario salva os contatos em `contact_requests` e envia imagens/PDFs para o bucket privado `contact-attachments`. O painel protegido esta em `admin.html`.
+
+## Instagram Studio
+
+O painel inclui geracao de rascunhos, artes de feed, roteiros de Reels, aprovacao e agendamento. Para ativar:
+
+1. Converta `@sem.ideia.com.br` para conta Profissional no Instagram.
+2. Configure um App na Meta e obtenha `INSTAGRAM_USER_ID` e um token de longa duracao com permissao de publicacao.
+3. Instale a Supabase CLI e vincule o projeto `aalcwxznodqjskzfddli`.
+4. Configure os Secrets sem colocar valores no Git:
+
+```powershell
+supabase secrets set OPENAI_API_KEY=... META_ACCESS_TOKEN=... INSTAGRAM_USER_ID=... CRON_SECRET=...
+```
+
+5. Publique as funcoes:
+
+```powershell
+supabase functions deploy generate-instagram-content
+supabase functions deploy publish-instagram --no-verify-jwt
+```
+
+6. Execute novamente `supabase-schema.sql` e, para agendamento automatico, configure um segredo forte em `supabase-instagram-cron.sql` e execute o arquivo no SQL Editor.
+
+Reels recebem roteiro e capa automaticamente, mas exigem um MP4 revisado antes da aprovacao. A publicacao final ocorre somente depois da aprovacao administrativa.

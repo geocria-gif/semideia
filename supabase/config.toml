@@ -1,0 +1,5 @@
+[functions.generate-instagram-content]
+verify_jwt = true
+
+[functions.publish-instagram]
+verify_jwt = false

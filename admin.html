@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Montserrat:wght@700;800;900&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="admin.css">
+  <style>.instagram-actions input[type="datetime-local"]{display:block;width:auto;height:38px;font-size:.65rem}</style>
 </head>
 <body>
   <section class="login-screen" id="loginView">
@@ -55,6 +56,30 @@
       </header>
       <div class="summary"><div><strong id="totalCount">0</strong><span>Total</span></div><div><strong id="newCount">0</strong><span>Novas</span></div><div><strong id="contactedCount">0</strong><span>Em atendimento</span></div></div>
       <p class="status" id="dashboardStatus" role="status"></p>
+      <section class="instagram-studio" aria-labelledby="instagramTitle">
+        <div class="studio-heading">
+          <div><p class="eyebrow">Conteudo e automacao</p><h2 id="instagramTitle">Instagram Studio</h2><p>Gere rascunhos com IA, revise a arte e aprove antes de publicar em @sem.ideia.com.br.</p></div>
+          <span class="setup-badge">Meta API aguardando configuracao</span>
+        </div>
+        <div class="studio-grid">
+          <form class="generator-card" id="instagramGenerator">
+            <label for="igTopic">Tema do conteudo</label>
+            <textarea id="igTopic" name="topic" placeholder="Ex.: 5 motivos para sua empresa ter um site profissional" required></textarea>
+            <div class="generator-row">
+              <div><label for="igFormat">Formato</label><select id="igFormat" name="format"><option value="feed">Feed</option><option value="reel">Reel</option></select></div>
+              <div><label for="igTone">Tom</label><select id="igTone" name="tone"><option>Profissional</option><option>Educativo</option><option>Inspirador</option><option>Direto e comercial</option></select></div>
+            </div>
+            <label for="igGoal">Objetivo</label>
+            <select id="igGoal" name="goal"><option>Gerar interesse</option><option>Captar leads</option><option>Educar o publico</option><option>Divulgar servico</option><option>Fortalecer a marca</option></select>
+            <button id="generateInstagramButton" type="submit">Gerar rascunho com IA</button>
+            <p class="status" id="instagramStatus" role="status"></p>
+          </form>
+          <div class="studio-guide"><strong>Fluxo de publicacao</strong><ol><li><span>01</span>Informe tema, formato e objetivo.</li><li><span>02</span>A IA cria legenda, CTA, hashtags e roteiro.</li><li><span>03</span>Revise a arte ou envie o video do Reel.</li><li><span>04</span>Aprove e publique pela Meta API.</li></ol></div>
+        </div>
+        <div class="content-toolbar"><h3>Fila de conteudos</h3><button class="ghost" id="refreshInstagramButton" type="button">Atualizar fila</button></div>
+        <div class="instagram-list" id="instagramList"><p class="empty">Nenhum rascunho gerado.</p></div>
+      </section>
+      <div class="content-toolbar requests-title"><div><p class="eyebrow">Banco de dados</p><h2>Solicitacoes recebidas</h2></div></div>
       <div class="request-list" id="requestList"></div>
     </section>
   </main>
